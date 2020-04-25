@@ -1,7 +1,75 @@
-<h1>
-    Hey Hey
-</h1>
-<p>
-    <%= locals.title %>
-</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/homestyle.css">
+    <title>Document</title>
+</head>
+<body>
+    <div><a href="/signup">Sign Up</a></div>
+    <div id="container">
+        <div id="enquiry">
+            <h2>Get Account Details</h2>
+            <form action="/enquiry" method="POST">
+                <input type="text" name="accountNo" placeholder="Account No." required>
+                <input type="password" name="passcode" placeholder="Passcode">
+                <input type="submit" value="Get Details">
+            </form>
+        </div>
+
+        <div id="deposit">
+            <h2>Deposit in Account</h2>
+            <form action="/deposit" method="POST">
+                <input type="text" name="accountNo" placeholder="Account No." required>
+                <input type="password" name="passcode" placeholder="Passcode">
+                <input type="number" name="deposit" required placeholder="Deposit Amount">
+                <input type="submit" value="Deposit">
+            </form>
+        </div>
+
+        <div id="transaction">
+            <h2>Make a transaction</h2>
+            <form action="/transaction" method="POST">
+                <input type="number" name="amount" required placeholder="Amount">
+                <br>
+                To
+                <input type="number" name="receiverAccNo" required placeholder="Recipient's Accout No.">
+                <br>
+                From
+                <input type="text" name="senderAccNo" placeholder="Sender's Account No." required>
+                <input type="password" name="passcode" placeholder="Passcode">
+                <input type="submit" value="Send">
+            </form>
+
+        </div>
+    </div>
+
+    <% if(show_enquiry == 'true'){ %>
+    <div id="show-enquiry">
+        <p>Name: <%= customer.name %></p>
+        <p>Account No.: <%= customer.accountNo %></p>
+        <p>Balance: <%= customer.balance %></p>
+    </div>
+    <% } %>
+    <% if(show_deposit == 'true'){ %>
+        <h2>Updated balance is: </h2>
+        <div id="show-deposit">
+            <p>Name: <%= customer.name %></p>
+            <p>Account No.: <%= customer.accountNo %></p>
+            <p>Balance: <%= customer.balance %></p>
+        </div>
+    <% } %>
+    <% if(show_transaction_update == 'true'){ %>
+        <h2>Transaction Successful!</h2>
+        <div>Money sent to <%= receiver.name %>. Updated account details:</div>
+        <div id="show-deposit">
+            <p>Name: <%= sender.name %></p>
+            <p>Account No.: <%= sender.accountNo %></p>
+            <p>Balance: <%= sender.balance %></p>
+        </div>
+    <% } %>
+
+</body>
+</html>
 
