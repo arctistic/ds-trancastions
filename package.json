@@ -1,0 +1,15 @@
+{
+  "name": "ds-assignment",
+  "version": "1.0.0",
+  "description": "Distributive systems transactions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "Akhil Ratna Chettri",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
